@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -27,8 +28,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
+        {/* <SessionProvider>
+          {children}
+        </SessionProvider> */}
         {children}
-        <footer>Made by Travis Hudson using Next.js in 2025</footer>
+        
+        {/* <footer>Made by Travis Hudson using Next.js in 2025</footer> */}
       </body>
     </html>
   );

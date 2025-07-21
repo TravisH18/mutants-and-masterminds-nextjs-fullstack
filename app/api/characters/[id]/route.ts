@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import db from '@/lib/db';
+import prisma from '@/app/lib/prisma';
 
 export async function DELETE(
   request: NextRequest,
@@ -8,7 +8,11 @@ export async function DELETE(
   const characterId = params.id;
 
   try {
-    await db.query('DELETE FROM characters WHERE id = $1', [characterId]);
+    await prisma.character.delete({
+      where: {
+        id: characterId
+      }
+    })
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
